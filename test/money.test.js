@@ -16,4 +16,9 @@ test('$5 * 2 = $10', () => {
     assert(10 === product.amount)
     product = five.times(3)
     assert(15 === product.amount)
+});
+  
+
+test('equals()', () => {
+  assert(new Dollar(5).equals(new Dollar(5)))
   });

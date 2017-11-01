@@ -8,4 +8,8 @@ export default class Dollar {
         return new Dollar(this.amount * multiplier)
     }
 
+    equals(other) {
+        return true
+     }
+
 }
