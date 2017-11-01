@@ -4,7 +4,8 @@
 // - [ ] amountをprivate にする
 // - [x] DOllarの副作用どうする?
 // - [ ] Moneyの丸め処理どうする?
-// - [ ] equals()
+// - [x] equals()
+// - [ ]  他のオブジェクトとの等価性比較
 
 'use strict'
 import Dollar from '../src/dollar'
@@ -16,4 +17,9 @@ test('$5 * 2 = $10', () => {
     assert(10 === product.amount)
     product = five.times(3)
     assert(15 === product.amount)
+});
+
+test('equals()', () => {
+  assert(new Dollar(5).equals(new Dollar(5)))
+  assert(false == new Dollar(5).equals(new Dollar(6)))
   });
