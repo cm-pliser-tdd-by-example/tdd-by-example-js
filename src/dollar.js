@@ -9,7 +9,7 @@ export default class Dollar {
     }
 
     equals(other) {
-        return true
-     }
+        return this.amount === other.amount
+    }
 
 }
