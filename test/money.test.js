@@ -12,11 +12,9 @@ import Dollar from '../src/dollar'
 import assert from 'power-assert'
 
 test('$5 * 2 = $10', () => {
-    let five = new Dollar(5)
-    let product = five.times(2)
-    assert(10 === product.amount)
-    product = five.times(3)
-    assert(15 === product.amount)
+    const five = new Dollar(5)
+    assert(new Dollar(10).equals(five.times(2)))
+    assert(new Dollar(15).equals(five.times(3)))
 });
 
 test('equals()', () => {
