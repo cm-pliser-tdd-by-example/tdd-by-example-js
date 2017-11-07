@@ -12,7 +12,8 @@
 // - [ ] DollarをFrancの重複
 // - [x] equalsの一般化
 // - [ ] timesの一般化
-// - [ ] FrancとDollarの比較
+// - [x] FrancとDollarの比較
+// - [ ] 通貨の概念
 
 'use strict'
 import Dollar from '../src/dollar'

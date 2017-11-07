@@ -1,5 +1,6 @@
 export default class Money {
     equals(other) {
-        return this.amount === other.amount
+        return this.constructor === other.constructor
+          && this.amount === other.amount
     }
 }
