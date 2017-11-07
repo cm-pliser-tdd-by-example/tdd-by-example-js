@@ -1,36 +1,47 @@
 //TODO
 // - [ ] $5 + 10 CHF = $10(レートが2:1の場合)
 // - [x] $5 * 2 = $10
-// - [ ] amountをprivate にする
+// - [x] amountをprivate にする
 // - [x] DOllarの副作用どうする?
 // - [ ] Moneyの丸め処理どうする?
 // - [x] equals()
-// - [ ]  他のオブジェクトとの等価性比較
+// - [ ] hashCode()
+// - [ ] nullとの等価性比較
+// - [ ] 他のオブジェクトとの等価性比較
 // - [x] 5CHF * 2 = 10 CHF
 // - [ ] DollarをFrancの重複
-// - [ ] equalsの一般化
+// - [x] equalsの一般化
 // - [ ] timesの一般化
+// - [x] FrancとDollarの比較
+// - [ ] 通貨の概念
 
 'use strict'
-import Dollar from '../src/dollar'
-import Franc from '../src/franc'
+import Money from '../src/money'
 import assert from 'power-assert'
 
 test('$5 * 2 = $10', () => {
-    const five = new Dollar(5)
-    assert(new Dollar(10).equals(five.times(2)))
-    assert(new Dollar(15).equals(five.times(3)))
+    const five = Money.dollar(5)
+    assert(Money.dollar(10).equals(five.times(2)))
+    assert(Money.dollar(15).equals(five.times(3)))
 });
 
 test('5 CHF * 2 = 10 CHF', () => {
-    const five = new Franc(5)
-    assert(new Franc(10).equals(five.times(2)))
-    assert(new Franc(15).equals(five.times(3)))
+    const five = Money.franc(5)
+    assert(Money.franc(10).equals(five.times(2)))
+    assert(Money.franc(15).equals(five.times(3)))
 });
 
 
 
 test('equals()', () => {
-  assert(new Dollar(5).equals(new Dollar(5)))
-  assert(false == new Dollar(5).equals(new Dollar(6)))
-  });
+  assert(Money.dollar(5).equals(Money.dollar(5)))
+  assert(false == Money.dollar(5).equals(Money.dollar(6)))
+  assert(Money.franc(5).equals(Money.franc(5)))
+  assert(false == Money.franc(5).equals(Money.franc(6)))
+  assert(false == Money.franc(5).equals(Money.dollar(5)))
+});
+
+test('通貨の概念', () => {
+  assert("USD" === Money.dollar(1).currency())
+  assert("CHF" === Money.franc(1).currency())
+})
