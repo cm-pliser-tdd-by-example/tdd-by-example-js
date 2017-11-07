@@ -40,3 +40,8 @@ test('equals()', () => {
   assert(false == Money.franc(5).equals(Money.franc(6)))
   assert(false == Money.franc(5).equals(Money.dollar(5)))
 });
+
+test('通貨の概念', () => {
+  assert("USD" === Money.dollar(1).currency())
+  assert("CHF" === Money.franc(1).currency())
+})
