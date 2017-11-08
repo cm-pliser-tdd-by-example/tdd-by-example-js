@@ -41,6 +41,10 @@ test('equals()', () => {
   assert(false == Money.franc(5).equals(Money.dollar(5)))
 });
 
+test('10 franとMoney(10, CHF)が等しい', () => {
+  assert(Money.franc(10).equals(new Money(10, "CHF")))
+});
+
 test('通貨の概念', () => {
   assert("USD" === Money.dollar(1).currency())
   assert("CHF" === Money.franc(1).currency())
