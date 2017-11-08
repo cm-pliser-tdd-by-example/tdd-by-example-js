@@ -25,24 +25,10 @@ test('$5 * 2 = $10', () => {
     assert(Money.dollar(15).equals(five.times(3)))
 });
 
-test('5 CHF * 2 = 10 CHF', () => {
-    const five = Money.franc(5)
-    assert(Money.franc(10).equals(five.times(2)))
-    assert(Money.franc(15).equals(five.times(3)))
-});
-
-
-
 test('equals()', () => {
   assert(Money.dollar(5).equals(Money.dollar(5)))
   assert(false == Money.dollar(5).equals(Money.dollar(6)))
-  assert(Money.franc(5).equals(Money.franc(5)))
-  assert(false == Money.franc(5).equals(Money.franc(6)))
   assert(false == Money.franc(5).equals(Money.dollar(5)))
-});
-
-test('10 franとMoney(10, CHF)が等しい', () => {
-  assert(Money.franc(10).equals(new Money(10, "CHF")))
 });
 
 test('通貨の概念', () => {
