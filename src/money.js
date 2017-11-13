@@ -6,7 +6,7 @@ export default class Money {
     }
 
     equals(other) {
-        return this.constructor === other.constructor
+        return this._currency === other._currency
           && this._amount === other._amount
     }
 
@@ -14,35 +14,15 @@ export default class Money {
         return this._currency
     }
 
+    times(multiplier) { 
+        return new Money(this._amount * multiplier, this._currency)
+    }
+
     static dollar(amount) {
-        return new Dollar(amount, "USD")
+        return new Money(amount, "USD")
     }
 
     static franc(amount) {
-        return new Franc(amount, "CHF")
+        return new Money(amount, "CHF")
     }
-}
-
-class Franc extends Money { 
-    
-    constructor(amount, currency) { 
-        super(amount, currency)
-    }
-    
-    times(multiplier) { 
-        return new Franc(this._amount * multiplier, "CHF")
-    }
-    
-}
-
-class Dollar extends Money { 
-    
-    constructor(amount, currency) { 
-        super(amount, currency)
-    }
-    
-    times(multiplier) { 
-        return new Dollar(this._amount * multiplier, "USD")
-    }
-    
 }
