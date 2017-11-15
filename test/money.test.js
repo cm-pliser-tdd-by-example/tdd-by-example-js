@@ -25,3 +25,8 @@ test('通貨の概念', () => {
   assert("USD" === Money.dollar(1).currency())
   assert("CHF" === Money.franc(1).currency())
 })
+
+test('簡単な足し算 $5+$5=$10', () => { 
+  const sum = Money.dollar(5).plus(Money.dollar(5))
+  assert(sum.equals(Money.dollar(10)))
+})
