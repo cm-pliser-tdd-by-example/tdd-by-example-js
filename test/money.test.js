@@ -1,22 +1,13 @@
 //TODO
 // - [ ] $5 + 10 CHF = $10(レートが2:1の場合)
-// - [x] $5 * 2 = $10
-// - [x] amountをprivate にする
-// - [x] DOllarの副作用どうする?
-// - [ ] Moneyの丸め処理どうする?
-// - [x] equals()
 // - [ ] hashCode()
+// - [ ] Moneyの丸め処理どうする?
 // - [ ] nullとの等価性比較
 // - [ ] 他のオブジェクトとの等価性比較
-// - [x] 5CHF * 2 = 10 CHF
-// - [ ] DollarをFrancの重複
-// - [x] equalsの一般化
-// - [ ] timesの一般化
-// - [x] FrancとDollarの比較
-// - [ ] 通貨の概念
 
 'use strict'
 import Money from '../src/money'
+import Bank from '../src/bank'
 import assert from 'power-assert'
 
 test('$5 * 2 = $10', () => {
@@ -34,4 +25,13 @@ test('equals()', () => {
 test('通貨の概念', () => {
   assert("USD" === Money.dollar(1).currency())
   assert("CHF" === Money.franc(1).currency())
+})
+
+test('簡単な足し算 $5+$5=$10', () => { 
+  const five = Money.dollar(5)
+  const sum = five.plus(five)
+  const bank = new Bank()
+  const reduced = bank.reduce(sum, "USD")
+  assert(Money.dollar(10).equals(reduced))
+
 })

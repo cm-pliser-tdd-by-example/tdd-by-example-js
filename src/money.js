@@ -18,6 +18,10 @@ export default class Money {
         return new Money(this._amount * multiplier, this._currency)
     }
 
+    plus(addend) { 
+        return new Money(this._amount + addend._amount, this._currency)
+    }
+
     static dollar(amount) {
         return new Money(amount, "USD")
     }
