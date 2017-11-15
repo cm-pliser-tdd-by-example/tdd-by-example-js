@@ -7,6 +7,7 @@
 
 'use strict'
 import Money from '../src/money'
+import Bank from '../src/bank'
 import assert from 'power-assert'
 
 test('$5 * 2 = $10', () => {
@@ -27,6 +28,10 @@ test('通貨の概念', () => {
 })
 
 test('簡単な足し算 $5+$5=$10', () => { 
-  const sum = Money.dollar(5).plus(Money.dollar(5))
-  assert(sum.equals(Money.dollar(10)))
+  const five = Money.dollar(5)
+  const sum = five.plus(five)
+  const bank = new Bank()
+  const reduced = bank.reduce(sum, "USD")
+  assert(Money.dollar(10).equals(reduced))
+
 })
