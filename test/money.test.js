@@ -49,3 +49,8 @@ test('Sum#reduce', () => {
   const result = bank.reduce(sum, "USD")
   assert(Money.dollar(7).equals(result))
 })
+
+test('Money#reduce', () => {
+  const five = Money.dollar(5)
+  assert(five.reduce("USD").equals(five))
+})

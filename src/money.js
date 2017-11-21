@@ -20,6 +20,11 @@ export default class Money {
         return this._currency
     }
 
+
+    reduce(to) { 
+        return this;
+    }
+
     times(multiplier) { 
         return new Money(this._amount * multiplier, this._currency)
     }
