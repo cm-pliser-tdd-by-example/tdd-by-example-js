@@ -8,6 +8,7 @@
 'use strict'
 import Money from '../src/money'
 import Bank from '../src/bank'
+import Sum from '../src/sum'
 import assert from 'power-assert'
 
 test('$5 * 2 = $10', () => {
@@ -33,5 +34,18 @@ test('簡単な足し算 $5+$5=$10', () => {
   const bank = new Bank()
   const reduced = bank.reduce(sum, "USD")
   assert(Money.dollar(10).equals(reduced))
+})
 
+test('#plusがSumを返す', () => { 
+  const five = Money.dollar(5)
+  const result = five.plus(five)
+  assert(five.equals(result.augend))
+  assert(five.equals(result.addend))
+})
+
+test('Sum#reduce', () => {
+  const sum = new Sum(Money.dollar(3), Money.dollar(4))
+  const bank = new Bank()
+  const result = bank.reduce(sum, "USD")
+  assert(Money.dollar(7).equals(result))
 })

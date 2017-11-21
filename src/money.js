@@ -1,3 +1,5 @@
+import Sum from './sum'
+
 export default class Money {
 
     constructor(amount, currency){
@@ -10,6 +12,10 @@ export default class Money {
           && this._amount === other._amount
     }
 
+    amount() { 
+        return this._amount
+    }
+
     currency(){
         return this._currency
     }
@@ -19,7 +25,7 @@ export default class Money {
     }
 
     plus(addend) { 
-        return new Money(this._amount + addend._amount, this._currency)
+        return new Sum(this, addend)
     }
 
     static dollar(amount) {

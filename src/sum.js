@@ -2,7 +2,9 @@
 
 export default class Sum { 
 
-  sum(a, b) {
-    return a + b;
+  constructor(augend, addend) { 
+    this.augend = augend
+    this.addend = addend
   }
+
 }

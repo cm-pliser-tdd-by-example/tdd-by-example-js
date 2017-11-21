@@ -3,7 +3,8 @@ import Money from './money'
 export default class Bank {
 
     reduce(source, to) { 
-        return Money.dollar(10)
+        const amount = source.augend.amount() + source.addend.amount()
+        return new Money(amount, to)
     }
 
 }
