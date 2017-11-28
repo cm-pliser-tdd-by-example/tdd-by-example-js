@@ -1,6 +1,12 @@
 //TODO
 // - [ ] $5 + 10 CHF = $10(レートが2:1の場合)
-// - [ ] hashCode()
+// - [ ] $5 + $5 = $10
+// - [ ] $5 + $5 がMoneyを返す
+// - [ ] Moneyを変換して換算を行う
+// - [ ] Reduce(Bank, String)
+
+
+//以下塩漬け?
 // - [ ] Moneyの丸め処理どうする?
 // - [ ] nullとの等価性比較
 // - [ ] 他のオブジェクトとの等価性比較
@@ -52,5 +58,14 @@ test('Sum#reduce', () => {
 
 test('Money#reduce', () => {
   const five = Money.dollar(5)
-  assert(five.reduce("USD").equals(five))
+  const bank = new Bank()
+  assert(five.reduce(bank, "USD").equals(five))
 })
+
+test('Moneyを異なる通貨に変換するためにreduceする', () => {
+  const bank = new Bank()
+  bank.addRate("CHF", "USD", 2)
+  const result = bank.reduce(Money.franc(2), "USD")
+  assert(Money.dollar(1).equals(result))
+
+ })

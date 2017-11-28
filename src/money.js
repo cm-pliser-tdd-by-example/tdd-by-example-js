@@ -21,8 +21,9 @@ export default class Money {
     }
 
 
-    reduce(to) { 
-        return this;
+    reduce(bank, to) { 
+        const rate = bank.rate(this._currency, to)
+        return new Money(this._amount / rate, to)
     }
 
     times(multiplier) { 
