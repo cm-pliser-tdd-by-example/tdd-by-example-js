@@ -1,9 +1,10 @@
 //TODO
 // - [ ] $5 + 10 CHF = $10(レートが2:1の場合)
-// - [ ] $5 + $5 = $10
+// - [x] $5 + $5 = $10
 // - [ ] $5 + $5 がMoneyを返す
-// - [ ] Moneyを変換して換算を行う
-// - [ ] Reduce(Bank, String)
+// - [x] Bank.reduce(Money)
+// - [x] Moneyを変換して換算を行う
+// - [x] Reduce(Bank, String)
 
 
 //以下塩漬け?
@@ -67,5 +68,9 @@ test('Moneyを異なる通貨に変換するためにreduceする', () => {
   bank.addRate("CHF", "USD", 2)
   const result = bank.reduce(Money.franc(2), "USD")
   assert(Money.dollar(1).equals(result))
+})
 
- })
+test('同じ通貨同士でのレートは1:1', () => { 
+  assert(1 === new Bank().rate("USD", "USD"))
+  assert(1 === new Bank().rate("CHF", "CHF"))
+})
