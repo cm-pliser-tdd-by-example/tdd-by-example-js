@@ -1,8 +1,17 @@
 'use strict'
 
+import Money from './money'
+
 export default class Sum { 
 
-  sum(a, b) {
-    return a + b;
+  constructor(augend, addend) { 
+    this.augend = augend
+    this.addend = addend
   }
+
+  reduce(bank, to) { 
+    const amount = this.augend.reduce(bank, to).amount() + this.addend.reduce(bank, to).amount()
+    return new Money(amount, to)
+  }
+
 }
