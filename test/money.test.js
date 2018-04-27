@@ -83,3 +83,24 @@ test('異なる通貨同士の足し算', () => {
   const result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
   assert(Money.dollar(10).equals(result))
 })
+
+test('Sum#plus', () => {
+  const fiveBucks = Money.dollar(5)
+  const tenFrancs = Money.franc(10)
+  const bank = new Bank()
+  bank.addRate("CHF", "USD", 2)
+  const sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks)
+  const result = bank.reduce(sum, "USD")
+  assert(Money.dollar(15).equals(result))
+})
+
+
+test('Sum#times', () => {
+  const fiveBucks = Money.dollar(5)
+  const tenFrancs = Money.franc(10)
+  const bank = new Bank()
+  bank.addRate("CHF", "USD", 2)
+  const sum = new Sum(fiveBucks, tenFrancs).plus(2)
+  const result = bank.reduce(sum, "USD")
+  assert(Money.dollar(30).equals(result))
+})
